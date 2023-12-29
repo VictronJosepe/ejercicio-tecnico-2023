@@ -32,6 +32,10 @@ td:nth-child(6) {
     width: 30px;
 }
 
+.table-overflow {
+    overflow-x: scroll;
+}
+
 .grid-footer {
     display: grid;
     grid-template-columns: repeat(2, 1fr);

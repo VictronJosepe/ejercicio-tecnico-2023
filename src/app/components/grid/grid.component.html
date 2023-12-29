@@ -1,30 +1,32 @@
-<table>
-    <tr>
-        <th>Logo</th>
-        <th>Nombre del producto</th>
-        <th>Descripción
-            <i class="fa fa-info-circle" aria-hidden="true" title="Descripción del Producto"></i>
-        </th>
-        <th>Fecha de liberación
-            <i class="fa fa-info-circle" aria-hidden="true"
-                title="Fecha a liberar el producto para los clientes en General"></i>
-        </th>
-        <th>Fecha de reestructuración
-            <i class="fa fa-info-circle" aria-hidden="true"
-                title="Fecha de revisión del producto para cambiar Términos y Condiciones"></i>
-        </th>
-        <th style="border: none;"></th>
-    </tr>
+<div class="table-overflow">
+    <table>
+        <tr>
+            <th>Logo</th>
+            <th>Nombre del producto</th>
+            <th>Descripción
+                <i class="fa fa-info-circle" aria-hidden="true" title="Descripción del Producto"></i>
+            </th>
+            <th>Fecha de liberación
+                <i class="fa fa-info-circle" aria-hidden="true"
+                    title="Fecha a liberar el producto para los clientes en General"></i>
+            </th>
+            <th>Fecha de reestructuración
+                <i class="fa fa-info-circle" aria-hidden="true"
+                    title="Fecha de revisión del producto para cambiar Términos y Condiciones"></i>
+            </th>
+            <th style="border: none;"></th>
+        </tr>
 
-    <tr *ngFor="let product of productList">
-        <td>{{product.logo}}</td>
-        <td>{{product.productName}}</td>
-        <td>{{product.description}}</td>
-        <td>{{product.liberationDate | date:'dd/MM/yyyy'}}</td>
-        <td>{{product.reestructurationDate | date:'dd/MM/yyyy'}}</td>
-        <td><i class="fa fa-ellipsis-v" aria-hidden="true"></i></td>
-    </tr>
-</table>
+        <tr *ngFor="let product of productList">
+            <td>{{product.logo}}</td>
+            <td>{{product.productName}}</td>
+            <td>{{product.description}}</td>
+            <td>{{product.liberationDate | date:'dd/MM/yyyy'}}</td>
+            <td>{{product.reestructurationDate | date:'dd/MM/yyyy'}}</td>
+            <td><i class="fa fa-ellipsis-v" aria-hidden="true"></i></td>
+        </tr>
+    </table>
+</div>
 
 <div class="grid-footer">
     <div class="left-div">
