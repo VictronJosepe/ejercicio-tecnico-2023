@@ -19,16 +19,16 @@
 
         <tr *ngFor="let product of productList">
             <td>{{product.logo}}</td>
-            <td>{{product.productName}}</td>
+            <td>{{product.name}}</td>
             <td>{{product.description}}</td>
-            <td>{{product.liberationDate | date:'dd/MM/yyyy'}}</td>
-            <td>{{product.reestructurationDate | date:'dd/MM/yyyy'}}</td>
+            <td>{{product.date_release | date:'dd/MM/yyyy'}}</td>
+            <td>{{product.date_revision | date:'dd/MM/yyyy'}}</td>
             <td><i class="fa fa-ellipsis-v" aria-hidden="true"></i></td>
         </tr>
     </table>
 </div>
 
-<div class="grid-footer">
+<div class="parallel-components">
     <div class="left-div">
         <p>{{productList?.length || 0}}&nbsp;&nbsp;{{productList?.length === 1? 'Resultado': 'Resultados'}}</p>
     </div>

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IGridData } from 'src/app/interfaces/IGridData';
+import { IProduct } from 'src/app/interfaces/IProduct';
 
 @Component({
   selector: 'app-grid',
@@ -8,7 +8,7 @@ import { IGridData } from 'src/app/interfaces/IGridData';
 })
 export class GridComponent {
 
-  productList: IGridData[] | null = null;
+  productList: IProduct[] | null = null;
 
   constructor() {
 
@@ -19,42 +19,42 @@ export class GridComponent {
       {
         id: "001",
         logo: "JG",
-        productName: "Nombre del producto",
+        name: "Nombre del producto",
         description: "Descripción",
-        liberationDate: new Date("01/01/2000"),
-        reestructurationDate: new Date("01/01/2001")
+        date_release: new Date("01/01/2000"),
+        date_revision: new Date("01/01/2001")
       },
       {
         id: "002",
         logo: "JG",
-        productName: "Nombre del producto",
+        name: "Nombre del producto",
         description: "Descripción",
-        liberationDate: new Date("01/01/2000"),
-        reestructurationDate: new Date("01/01/2001")
+        date_release: new Date("01/01/2000"),
+        date_revision: new Date("01/01/2001")
       },
       {
         id: "003",
         logo: "JG",
-        productName: "Nombre del producto",
+        name: "Nombre del producto",
         description: "Descripción",
-        liberationDate: new Date("01/01/2000"),
-        reestructurationDate: new Date("01/01/2001")
+        date_release: new Date("01/01/2000"),
+        date_revision: new Date("01/01/2001")
       },
       {
         id: "004",
         logo: "JG",
-        productName: "Nombre del producto",
+        name: "Nombre del producto",
         description: "Descripción",
-        liberationDate: new Date("01/01/2000"),
-        reestructurationDate: new Date("01/01/2001")
+        date_release: new Date("01/01/2000"),
+        date_revision: new Date("01/01/2001")
       },
       {
         id: "005",
         logo: "JG",
-        productName: "Nombre del producto",
+        name: "Nombre del producto",
         description: "Descripción",
-        liberationDate: new Date("01/01/2000"),
-        reestructurationDate: new Date("01/01/2001")
+        date_release: new Date("01/01/2000"),
+        date_revision: new Date("01/01/2001")
       }
     ]
   }
