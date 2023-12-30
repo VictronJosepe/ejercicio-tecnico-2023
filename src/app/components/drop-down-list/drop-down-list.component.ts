@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'drop-down-list',
@@ -6,8 +6,11 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./drop-down-list.component.scss']
 })
 export class DropDownListComponent {
-  @Input() valuesList: Number[];
-  constructor() {
-    this.valuesList = [5, 10, 20];
+  @Input() valuesList!: any[];
+
+  @Output() changeEvent = new EventEmitter<any>();
+
+  onChangeValue(event: Event) {
+    this.changeEvent.emit((event.target! as HTMLSelectElement).value);
   }
 }

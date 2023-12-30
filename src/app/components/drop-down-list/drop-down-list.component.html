@@ -1,3 +1,3 @@
-<select>
+<select (change)="onChangeValue($event)">
     <option *ngFor="let optionValue of valuesList">{{optionValue}}</option>
 </select>

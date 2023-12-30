@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { IProduct } from 'src/app/interfaces/IProduct';
 import { Observable } from 'rxjs';
 
@@ -17,7 +17,7 @@ export class HttpRequestsService {
   };
 
   // GET
-  getProducts(): Observable<Array<IProduct>> {
+  getAllProducts(): Observable<Array<IProduct>> {
     let url = '/bp/products';
     return this.http.get<Array<IProduct>>(this.baseUrl + url, this.options);
   }
@@ -53,6 +53,4 @@ export class HttpRequestsService {
       };
     return this.http.delete<any>(this.baseUrl + url, deleteOptions);
   }
-
-
 }

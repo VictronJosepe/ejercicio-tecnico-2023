@@ -19,7 +19,11 @@ table {
 
 th {
     background-color: #f9fafc;
-    font-weight: bold
+    font-weight: bold;
+}
+
+td {
+    text-overflow: ellipsis;
 }
 
 table th:nth-child(1),
@@ -36,4 +40,12 @@ td:nth-child(6) {
 
 .table-overflow {
     overflow-x: scroll;
+    overflow-y: auto;
+    height: 90%;
+
+    thead th {
+        position: sticky;
+        top: 0px;
+        z-index: 100;
+    }
 }
