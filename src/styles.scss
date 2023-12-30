@@ -16,3 +16,23 @@ i {
     color: #929296;
     padding-left: 8px;
 }
+
+.parallel-components {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 1fr;
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+
+    .left-div {
+        grid-area: 1 / 1 / 2 / 2;
+        text-align: left;
+        display: flex;
+        align-items: center;
+    }
+
+    .right-dir {
+        grid-area: 1 / 2 / 2 / 3;
+        text-align: right;
+    }
+}
