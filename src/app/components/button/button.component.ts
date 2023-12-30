@@ -7,11 +7,6 @@ import { Component, Input } from '@angular/core';
 })
 export class ButtonComponent {
   @Input() value: String = "New";
-  @Input() onClick!: () => void;
   @Input() customClass: string = 'basic';
 
-
-  executeFunction() {
-    this.onClick();
-  }
 }
