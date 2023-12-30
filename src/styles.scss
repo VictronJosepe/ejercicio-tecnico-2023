@@ -6,10 +6,15 @@
     src: url('./assets/fonts/Prelo-Book.ttf');
 }
 
+* {
+    font-family: "prelo-book";
+}
+
 html {
     background-color: #f4f6f9;
     margin: 5%;
-    margin-top: 8%;
+    margin-top: calc(5% + 50px);
+    overflow: hidden;
 }
 
 i {

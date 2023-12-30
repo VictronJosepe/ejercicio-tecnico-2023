@@ -1,0 +1,60 @@
+hr {
+    border: 1px solid gray;
+}
+
+.container-page {
+    background-color: white;
+    height: 100%;
+    width: 100vh;
+    min-width: none;
+    overflow-y: auto;
+    text-align: center;
+}
+
+.grid-layout {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+    padding: 50px;
+    padding-top: 5px;
+
+    div {
+        height: 120px;
+    }
+
+    .div1 {
+        grid-area: 1 / 1 / 2 / 2;
+    }
+
+    .div2 {
+        grid-area: 1 / 2 / 2 / 3;
+    }
+
+    .div3 {
+        grid-area: 2 / 1 / 3 / 2;
+    }
+
+    .div4 {
+        grid-area: 2 / 2 / 3 / 3;
+    }
+
+    .div5 {
+        grid-area: 3 / 1 / 4 / 2;
+    }
+
+    .div6 {
+        grid-area: 3 / 2 / 4 / 3;
+    }
+}
+
+.align-left {
+    margin-left: 50px;
+    text-align: left;
+}
+
+.align-right {
+    margin-right: 30px;
+    text-align: right;
+}

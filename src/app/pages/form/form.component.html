@@ -1,0 +1,37 @@
+<div class="container-page">
+    <h1>Formulario de Registro</h1>
+    <hr>
+    <form>
+        <div class="grid-layout">
+            <div class="div1">
+                <rounded-input [label]="'ID'" [customClass]="'primary'"></rounded-input>
+            </div>
+            <div class="div2">
+                <rounded-input [label]="'Nombre'" [customClass]="'primary'"></rounded-input>
+            </div>
+            <div class="div3">
+                <rounded-input [label]="'Descripción'" [customClass]="'primary'"
+                    [errorMessage]="'test'"></rounded-input>
+            </div>
+            <div class="div4">
+                <rounded-input [label]="'Logo'" [customClass]="'primary'"></rounded-input>
+            </div>
+            <div class="div5">
+                <rounded-input [label]="'Fecha Liberación'" [customClass]="'primary'"></rounded-input>
+            </div>
+            <div class="div6">
+                <rounded-input [label]="'Fecha Revisión'" [customClass]="'primary'"
+                    [errorMessage]="'test'"></rounded-input>
+            </div>
+        </div>
+        <br>
+        <div class="parallel-components">
+            <div class="align-right">
+                <app-button value="Reiniciar" [customClass]="'basic'"></app-button>
+            </div>
+            <div class="align-left">
+                <app-button value="Enviar" [customClass]="'primary'"></app-button>
+            </div>
+        </div>
+    </form>
+</div>

@@ -1,1 +1,5 @@
-<input [placeholder]="placeholder">
+<div class="input-container">
+    <p class="label">{{label}}</p>
+    <input [placeholder]="placeholder" [ngClass]="errorMessage?'error':customClass">
+    <p class="l-error" *ngIf="errorMessage">{{errorMessage}}</p>
+</div>

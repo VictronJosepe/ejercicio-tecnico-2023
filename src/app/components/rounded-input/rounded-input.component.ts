@@ -6,5 +6,9 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./rounded-input.component.scss']
 })
 export class RoundedInputComponent {
-  @Input() placeholder?: String;
+  @Input() placeholder: string = "";
+  @Input() label?: string;
+  @Input() customClass: string = "basic";
+  @Input() errorMessage: string = "";
+
 }
