@@ -1,5 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { IProduct } from 'src/app/interfaces/IProduct';
 import { HttpRequestsService } from 'src/app/services/httpRequests/http-requests.service';
@@ -17,6 +18,7 @@ export class GridComponent {
   constructor(private http: HttpRequestsService) { }
 
   ngOnInit() {
+    sessionStorage.clear();
     this.http.getAllProducts().subscribe({
       next: (resp: IProduct[]) => {
         this.productListServer = resp;
@@ -28,18 +30,18 @@ export class GridComponent {
     });
   }
 
-  updateProductListQuantity(quantity: any) {
+  protected updateProductListQuantity(quantity: any) {
     let quantityNumber = Number(quantity);
     if (this.productListServer && !isNaN(quantityNumber)) {
       this.productListSliced = this.productListServer.slice(0, quantityNumber);
     }
   }
 
-  formatDate(tempDate: Date | string): Date {
+  protected formatDate(dateType: "date_release" | "date_revision", index: number): Date {
+    let tempDate = this.productListSliced![index][dateType];
     if (typeof tempDate === "string") {
-      return new Date(tempDate.slice(0, tempDate.indexOf("+")));
-    } else {
-      return tempDate;
+      this.productListSliced![index][dateType] = new Date(tempDate.slice(0, tempDate.indexOf("+")));
     }
+    return this.productListSliced![index][dateType] as Date;
   }
 }

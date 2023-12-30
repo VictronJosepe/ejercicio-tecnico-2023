@@ -20,13 +20,13 @@
         </thead>
 
         <tbody>
-            <tr *ngFor="let product of productListSliced">
+            <tr *ngFor="let product of productListSliced; index as i">
                 <td><img src="{{product.logo}}" alt="Image not found" onerror="this.onerror=null;this.src='../assets/images/placeholder.png';" width="150px"/></td>
                 <td>{{product.name}}</td>
                 <td>{{product.description}}</td>
-                <td>{{formatDate(product.date_release) | date:'dd/MM/yyyy'}}</td>
-                <td>{{formatDate(product.date_revision) | date:'dd/MM/yyyy'}}</td>
-                <td><app-expandable-menu></app-expandable-menu></td>
+                <td>{{formatDate("date_release", i) | date:'dd/MM/yyyy'}}</td>
+                <td>{{formatDate("date_revision", i) | date:'dd/MM/yyyy'}}</td>
+                <td><app-expandable-menu [product]="product"></app-expandable-menu></td>
             </tr>
         </tbody>
     </table>

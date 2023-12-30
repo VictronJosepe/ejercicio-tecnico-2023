@@ -4,33 +4,34 @@
     <form>
         <div class="grid-layout">
             <div class="div1">
-                <rounded-input [label]="'ID'" [customClass]="'primary'"></rounded-input>
+                <rounded-input [label]="'ID'" [customClass]="'primary'" [(value)]="product.id"></rounded-input>
             </div>
             <div class="div2">
-                <rounded-input [label]="'Nombre'" [customClass]="'primary'"></rounded-input>
+                <rounded-input [label]="'Nombre'" [customClass]="'primary'" [(value)]="product.name"></rounded-input>
             </div>
             <div class="div3">
-                <rounded-input [label]="'Descripción'" [customClass]="'primary'"
-                    [errorMessage]="'test'"></rounded-input>
+                <rounded-input [label]="'Descripción'" [customClass]="'primary'" [errorMessage]="'test'"
+                    [(value)]="product.description"></rounded-input>
             </div>
             <div class="div4">
-                <rounded-input [label]="'Logo'" [customClass]="'primary'"></rounded-input>
+                <rounded-input [label]="'Logo'" [customClass]="'primary'" [(value)]="product.logo"></rounded-input>
             </div>
             <div class="div5">
-                <rounded-input [label]="'Fecha Liberación'" [customClass]="'primary'"></rounded-input>
+                <rounded-input [label]="'Fecha Liberación'" [customClass]="'primary'" [errorMessage]="'test'"
+                    [(value)]="product.date_release" [type]="'date'"></rounded-input>
             </div>
             <div class="div6">
-                <rounded-input [label]="'Fecha Revisión'" [customClass]="'primary'"
-                    [errorMessage]="'test'"></rounded-input>
+                <rounded-input [label]="'Fecha Revisión'" [customClass]="'primary'" [(value)]="product.date_revision"
+                    [type]="'date'" [disabled]="true"></rounded-input>
             </div>
         </div>
         <br>
         <div class="parallel-components">
             <div class="align-right">
-                <app-button value="Reiniciar" [customClass]="'basic'"></app-button>
+                <app-button value="Reiniciar" [customClass]="'basic'" (click)="cancelChanges()"></app-button>
             </div>
             <div class="align-left">
-                <app-button value="Enviar" [customClass]="'primary'"></app-button>
+                <app-button value="Enviar" [customClass]="'primary'" (click)="saveChanges()"></app-button>
             </div>
         </div>
     </form>

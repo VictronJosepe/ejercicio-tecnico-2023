@@ -1,4 +1,12 @@
-<rounded-input placeholder="Search..."></rounded-input>
+<div class="parallel-components">
+    <div class="left-div">
+        <rounded-input placeholder="Search..."></rounded-input>
+    </div>
+    <div class="right-dir">
+        <app-button value="Agregar" [customClass]="'primary'" (click)="navigateCreateProduct()"></app-button>
+    </div>
+</div>
+
 <div class="white-container">
     <app-grid></app-grid>
 </div>

@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'rounded-input',
@@ -10,5 +10,20 @@ export class RoundedInputComponent {
   @Input() label?: string;
   @Input() customClass: string = "basic";
   @Input() errorMessage: string = "";
+  @Input() type: string = "";
+  @Input() disabled: boolean = false;
+
+  @Input() value: any;
+  @Output() valueChange = new EventEmitter<any>();
+
+  protected getClass() {
+
+    if (this.errorMessage)
+      return 'error';
+    if(this.disabled)
+      return 'disabled';
+
+    return this.customClass;
+  }
 
 }
