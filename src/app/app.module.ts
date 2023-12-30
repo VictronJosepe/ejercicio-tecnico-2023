@@ -12,6 +12,8 @@ import { DropDownListComponent } from './components/drop-down-list/drop-down-lis
 import { ButtonComponent } from './components/button/button.component';
 
 import { HttpRequestsService } from './services/httpRequests/http-requests.service';
+import { ExpandableMenuComponent } from './components/expandable-menu/expandable-menu.component';
+import { FormComponent } from './pages/form/form.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,9 @@ import { HttpRequestsService } from './services/httpRequests/http-requests.servi
     RoundedInputComponent,
     HeaderComponent,
     DropDownListComponent,
-    ButtonComponent
+    ButtonComponent,
+    ExpandableMenuComponent,
+    FormComponent
   ],
   imports: [
     BrowserModule,
