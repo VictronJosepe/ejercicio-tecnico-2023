@@ -4,6 +4,8 @@ import { FormGroup, FormControl, Validators } from "@angular/forms";
 
 import { IProduct } from 'src/app/interfaces/IProduct';
 import { CustomValidationService } from 'src/app/services/customValidation/custom-validation.service';
+import { HttpRequestsService } from 'src/app/services/httpRequests/http-requests.service';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-form',
@@ -14,7 +16,7 @@ export class FormComponent {
 
   protected isFormValid = false;
 
-  constructor(private router: Router, private customValidator: CustomValidationService) { }
+  constructor(private router: Router, private customValidator: CustomValidationService, private http: HttpRequestsService) { }
 
   ngOnInit() {
     let productInfo = sessionStorage.getItem("productInfo");
@@ -40,7 +42,23 @@ export class FormComponent {
   }
 
   protected saveChanges() {
-    debugger;
+    let obj: IProduct = {
+      date_release: this.productForm.get('releaseDate')!.value!,
+      date_revision: this.productForm.get('revisionDate')!.value!,
+      description: this.productForm.get('description')!.value!,
+      id: this.productForm.get('id')!.value!,
+      logo: this.productForm.get('logo')!.value!,
+      name: this.productForm.get('name')!.value!
+    }
+
+    this.http.createProduct(obj).subscribe({
+      next: (resp: IProduct) => {
+        this.router.navigateByUrl('/ejercicio/products');
+      },
+      error: (error: HttpErrorResponse) => {
+        console.error(error.message);
+      }
+    });
   }
 
   protected cancelChanges() {
@@ -75,10 +93,6 @@ export class FormComponent {
       this.customValidator.dateLaterByOneYear()
     ]),
   });
-
-  onSubmit() {
-    // this.router.navigateByUrl('/ejercicio/products');
-  }
 
   onChanges(): void {
     this.productForm.valueChanges.subscribe(val => {

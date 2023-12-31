@@ -22,7 +22,7 @@ export class ExpandableMenuComponent {
   protected deleteProduct(id: string, name: string) {
     if (window.confirm('¿Estás seguro de eliminar el producto ' + name + '?')) {
       this.http.deleteProduct(id).subscribe({
-        next: (resp: IProduct[]) => {
+        next: () => {
           window.location.reload();
         },
         error: (error: HttpErrorResponse) => {
