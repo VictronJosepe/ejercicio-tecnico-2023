@@ -1,0 +1,7 @@
+<div class="input-container">
+    <p [ngClass]="control.disabled?'l-disabled':'label'">{{label}}</p>
+    <input [placeholder]="placeholder" [ngClass]="getClass()" type="{{type}}" [formControl]="control">
+    <div *ngIf="!control.valid">
+        <p class="l-error">{{getMessage()}}</p>
+    </div>
+</div>

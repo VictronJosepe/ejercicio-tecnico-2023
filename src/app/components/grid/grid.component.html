@@ -1,0 +1,43 @@
+<div class="table-overflow">
+    <table>
+        <thead>
+            <tr>
+                <th>Logo</th>
+                <th>Nombre del producto</th>
+                <th>Descripción
+                    <i class="fa fa-info-circle" aria-hidden="true" title="Descripción del Producto"></i>
+                </th>
+                <th>Fecha de liberación
+                    <i class="fa fa-info-circle" aria-hidden="true"
+                        title="Fecha a liberar el producto para los clientes en General"></i>
+                </th>
+                <th>Fecha de reestructuración
+                    <i class="fa fa-info-circle" aria-hidden="true"
+                        title="Fecha de revisión del producto para cambiar Términos y Condiciones"></i>
+                </th>
+                <th style="border: none;"></th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr *ngFor="let product of productListSliced; index as i">
+                <td><img src="{{product.logo}}" alt="Image not found" onerror="this.onerror=null;this.src='../assets/images/placeholder.png';" width="150px"/></td>
+                <td>{{product.name}}</td>
+                <td>{{product.description}}</td>
+                <td>{{formatDate("date_release", i) | date:'dd/MM/yyyy'}}</td>
+                <td>{{formatDate("date_revision", i) | date:'dd/MM/yyyy'}}</td>
+                <td><app-expandable-menu [product]="product"></app-expandable-menu></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="parallel-components">
+    <div class="left-div">
+        <p>{{productListSliced?.length || 0}}&nbsp;&nbsp;{{productListSliced?.length === 1? 'Resultado': 'Resultados'}}
+        </p>
+    </div>
+    <div class="right-dir">
+        <drop-down-list [valuesList]="valuesList" (changeEvent)="updateProductListQuantity($event)"></drop-down-list>
+    </div>
+</div>

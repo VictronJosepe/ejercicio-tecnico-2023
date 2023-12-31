@@ -1,0 +1,13 @@
+.container {
+    width: 100%;
+    height: 75vh;
+    position: relative;
+}
+
+.my-container {
+    width: fit-content;
+    max-width: 100%;
+    height: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}

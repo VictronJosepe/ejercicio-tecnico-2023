@@ -1,0 +1,30 @@
+button {
+    height: 55px;
+    width: 100px;
+    color: #1d3266;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    cursor: pointer;
+}
+
+button:hover {
+    filter: brightness(95%);
+}
+
+button:active {
+    filter: brightness(90%);
+}
+
+.primary {
+    background-color: #f9de4b;
+}
+
+.basic {
+    background-color: #e9ecf3;
+}
+
+.disabled {
+    background-color: #fff199;
+}

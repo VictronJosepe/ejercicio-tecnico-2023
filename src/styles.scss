@@ -1,1 +1,43 @@
 /* You can add global styles to this file, and also import other style files */
+@import "node_modules/font-awesome";
+
+@font-face {
+    font-family: 'prelo-book';
+    src: url('./assets/fonts/Prelo-Book.ttf');
+}
+
+* {
+    font-family: "prelo-book";
+}
+
+html {
+    background-color: #f4f6f9;
+    margin: 5%;
+    margin-top: calc(5% + 50px);
+    overflow: hidden;
+}
+
+i {
+    color: #929296;
+    padding-left: 8px;
+}
+
+.parallel-components {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 1fr;
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+
+    .left-div {
+        grid-area: 1 / 1 / 2 / 2;
+        text-align: left;
+        display: flex;
+        align-items: center;
+    }
+
+    .right-dir {
+        grid-area: 1 / 2 / 2 / 3;
+        text-align: right;
+    }
+}
