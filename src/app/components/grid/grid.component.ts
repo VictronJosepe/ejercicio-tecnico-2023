@@ -14,6 +14,7 @@ export class GridComponent {
   protected productListServer: IProduct[] | null = null;
   protected productListSliced: IProduct[] | null = null;
   protected valuesList = [5, 10, 20];
+  private numberShownProducts: number = 5;
 
   constructor(private http: HttpRequestsService) { }
 
@@ -33,6 +34,7 @@ export class GridComponent {
   protected updateProductListQuantity(quantity: any) {
     let quantityNumber = Number(quantity);
     if (this.productListServer && !isNaN(quantityNumber)) {
+      this.numberShownProducts = quantityNumber;
       this.productListSliced = this.productListServer.slice(0, quantityNumber);
     }
   }
@@ -43,5 +45,9 @@ export class GridComponent {
       this.productListSliced![index][dateType] = new Date(tempDate.slice(0, tempDate.indexOf("+")));
     }
     return this.productListSliced![index][dateType] as Date;
+  }
+
+  public searchByBox(value: string) {
+    this.productListSliced = this.productListServer!.filter((p) => p.name.includes(value)).slice(0, this.numberShownProducts);
   }
 }

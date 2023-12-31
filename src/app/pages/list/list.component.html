@@ -1,7 +1,7 @@
 <div class="parallel-components">
-    <div class="left-div">
-        <rounded-input placeholder="Search..."></rounded-input>
-    </div>
+    <form class="left-div">
+        <rounded-input placeholder="Search..." [control]="searchForm.controls.searchBox"></rounded-input>
+    </form>
     <div class="right-dir">
         <app-button value="Agregar" [customClass]="'primary'" (click)="navigateCreateProduct()"></app-button>
     </div>

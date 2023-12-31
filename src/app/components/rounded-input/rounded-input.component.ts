@@ -13,7 +13,6 @@ export class RoundedInputComponent {
   @Input() label?: string;
   @Input() customClass: string = "basic";
   @Input() type: string = "";
-  @Input() disabled: boolean = false;
   @Input() control: FormControl = new FormControl();
 
   @Input() value: any;
@@ -22,8 +21,6 @@ export class RoundedInputComponent {
   protected getClass() {
     if (this.isInvalid())
       return 'error';
-    if (this.disabled)
-      return 'disabled';
 
     return this.customClass;
   }
