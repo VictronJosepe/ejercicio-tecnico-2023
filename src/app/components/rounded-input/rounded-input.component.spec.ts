@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { RoundedInputComponent } from './rounded-input.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 describe('RoundedInputComponent', () => {
   let component: RoundedInputComponent;
@@ -8,7 +9,8 @@ describe('RoundedInputComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [RoundedInputComponent]
+      declarations: [RoundedInputComponent],
+      imports:[ReactiveFormsModule]
     });
     fixture = TestBed.createComponent(RoundedInputComponent);
     component = fixture.componentInstance;

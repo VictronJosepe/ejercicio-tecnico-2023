@@ -38,8 +38,4 @@ export class ValidationUtilsService {
     }
     return message;
   }
-
-  public static checkFormValidity(){
-
-  }
 }
