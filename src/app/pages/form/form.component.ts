@@ -13,8 +13,8 @@ import { HttpErrorResponse } from '@angular/common/http';
   styleUrls: ['./form.component.scss']
 })
 export class FormComponent {
-
   protected isFormValid = false;
+  private isNewRegistry = true;
 
   constructor(private router: Router, private customValidator: CustomValidationService, private http: HttpRequestsService) { }
 
@@ -33,8 +33,10 @@ export class FormComponent {
       });
 
       this.productForm.get('id')?.disable();
+      this.isNewRegistry = false;
     } else {
       this.productForm.get('id')?.addAsyncValidators([this.customValidator.notExistInServer()]);
+      this.isNewRegistry = true;
     }
     this.productForm.get('revisionDate')?.disable();
     this.isFormValid = false;
@@ -51,14 +53,26 @@ export class FormComponent {
       name: this.productForm.get('name')!.value!
     }
 
-    this.http.createProduct(obj).subscribe({
-      next: (resp: IProduct) => {
-        this.router.navigateByUrl('/ejercicio/products');
-      },
-      error: (error: HttpErrorResponse) => {
-        console.error(error.message);
-      }
-    });
+    if(this.isNewRegistry){
+      this.http.createProduct(obj).subscribe({
+        next: (resp: IProduct) => {
+          this.router.navigateByUrl('/ejercicio/products');
+        },
+        error: (error: HttpErrorResponse) => {
+          console.error(error.message);
+        }
+      });
+    } else{
+      this.http.updateProduct(obj).subscribe({
+        next: (resp: IProduct) => {
+          this.router.navigateByUrl('/ejercicio/products');
+        },
+        error: (error: HttpErrorResponse) => {
+          console.error(error.message);
+        }
+      });
+    }
+
   }
 
   protected cancelChanges() {
