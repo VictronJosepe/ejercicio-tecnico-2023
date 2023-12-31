@@ -9,11 +9,11 @@ button {
     cursor: pointer;
 }
 
-button:hover{
+button:hover {
     filter: brightness(95%);
 }
 
-button:active{
+button:active {
     filter: brightness(90%);
 }
 
@@ -23,4 +23,8 @@ button:active{
 
 .basic {
     background-color: #e9ecf3;
+}
+
+.disabled {
+    background-color: #fff199;
 }

@@ -4,7 +4,9 @@ import { IProduct } from 'src/app/interfaces/IProduct';
 import { Observable } from 'rxjs';
 
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class HttpRequestsService {
 
   constructor(private http: HttpClient) { }
@@ -22,13 +24,13 @@ export class HttpRequestsService {
     return this.http.get<Array<IProduct>>(this.baseUrl + url, this.options);
   }
 
-  doesIdExist(id: string): Observable<string> {
+  doesIdExist(id: string): Observable<boolean> {
     let url = '/bp/products/verification',
       requestOptions = {
         ...this.options,
         params: { id }
       };
-    return this.http.get<string>(this.baseUrl + url, requestOptions);
+    return this.http.get<boolean>(this.baseUrl + url, requestOptions);
   }
 
   // POST

@@ -25,7 +25,7 @@ export class GridComponent {
         this.updateProductListQuantity(5);
       },
       error: (error: HttpErrorResponse) => {
-        console.error("error22", error.message);
+        console.error(error.message);
       }
     });
   }

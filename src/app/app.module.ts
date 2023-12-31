@@ -1,7 +1,7 @@
 import { NgModule, importProvidersFrom } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -16,7 +16,6 @@ import { DropDownListComponent } from './components/drop-down-list/drop-down-lis
 import { ButtonComponent } from './components/button/button.component';
 import { ExpandableMenuComponent } from './components/expandable-menu/expandable-menu.component';
 
-import { HttpRequestsService } from './services/httpRequests/http-requests.service';
 
 @NgModule({
   declarations: [
@@ -32,12 +31,11 @@ import { HttpRequestsService } from './services/httpRequests/http-requests.servi
   ],
   imports: [
     BrowserModule,
-    FormsModule,
+    ReactiveFormsModule,
     AppRoutingModule
   ],
   providers: [
-    importProvidersFrom(HttpClientModule),
-    HttpRequestsService
+    importProvidersFrom(HttpClientModule)
   ],
   bootstrap: [AppComponent]
 })
