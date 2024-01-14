@@ -10,7 +10,7 @@ describe('RoundedInputComponent', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [RoundedInputComponent],
-      imports:[ReactiveFormsModule]
+      imports: [ReactiveFormsModule]
     });
     fixture = TestBed.createComponent(RoundedInputComponent);
     component = fixture.componentInstance;
@@ -19,5 +19,12 @@ describe('RoundedInputComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  describe('getClass', () => {
+    it('returns error', () => {
+      spyOn(<any>component, "isInvalid").and.returnValue(true);
+      expect(component["getClass"]()).toBe("error");
+    });
   });
 });

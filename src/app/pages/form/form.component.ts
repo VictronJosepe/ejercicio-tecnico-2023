@@ -21,19 +21,23 @@ export class FormComponent {
   ngOnInit() {
     let productInfo = sessionStorage.getItem("productInfo");
     if (productInfo) {
-      let respObj: IProduct = JSON.parse(productInfo);
+      try {
+        let respObj: IProduct = JSON.parse(productInfo);
 
-      this.productForm.setValue({
-        id: respObj.id,
-        name: respObj.name,
-        description: respObj.description,
-        logo: respObj.logo,
-        releaseDate: new Date(respObj.date_release).toISOString().split('T')[0],
-        revisionDate: new Date(respObj.date_revision).toISOString().split('T')[0]
-      });
+        this.productForm.setValue({
+          id: respObj.id,
+          name: respObj.name,
+          description: respObj.description,
+          logo: respObj.logo,
+          releaseDate: new Date(respObj.date_release).toISOString().split('T')[0],
+          revisionDate: new Date(respObj.date_revision).toISOString().split('T')[0]
+        });
 
-      this.productForm.get('id')?.disable();
-      this.isNewRegistry = false;
+        this.productForm.get('id')?.disable();
+        this.isNewRegistry = false;
+      } catch (error) {
+        console.error(error);
+      }
     } else {
       this.productForm.get('id')?.addAsyncValidators([this.customValidator.notExistInServer()]);
       this.isNewRegistry = true;
@@ -53,7 +57,7 @@ export class FormComponent {
       name: this.productForm.get('name')!.value!
     }
 
-    if(this.isNewRegistry){
+    if (this.isNewRegistry) {
       this.http.createProduct(obj).subscribe({
         next: (resp: IProduct) => {
           this.router.navigateByUrl('/ejercicio/products');
@@ -62,7 +66,7 @@ export class FormComponent {
           console.error(error.message);
         }
       });
-    } else{
+    } else {
       this.http.updateProduct(obj).subscribe({
         next: (resp: IProduct) => {
           this.router.navigateByUrl('/ejercicio/products');
