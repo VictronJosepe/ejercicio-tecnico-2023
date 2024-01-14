@@ -1,0 +1,18 @@
+<div class="container">
+    <div class="content">
+        <div class="message">
+            ¿Estas seguro de eliminar el producto {{dialogService.name}}?
+        </div>
+        <div class="actions">
+            <div class="parallel-components">
+                <div class="left-div">
+                    <app-button value="Cancelar" [customClass]="'basic large'" (click)="cancelDelete()"></app-button>
+                </div>
+                <div class="right-div">
+                    <app-button value="Confirmar" [customClass]="'primary large'"
+                        (click)="confirmDelete()"></app-button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

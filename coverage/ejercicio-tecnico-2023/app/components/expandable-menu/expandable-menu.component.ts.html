@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">88.88% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>8/9</span>
+                <span class='fraction'>8/8</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>1/1</span>
+                <span class='fraction'>0/0</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">80% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>4/5</span>
+                <span class='fraction'>3/3</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">87.5% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>7/8</span>
+                <span class='fraction'>7/7</span>
             </div>
         
             
@@ -90,14 +90,7 @@
 <a name='L25'></a><a href='#L25'>25</a>
 <a name='L26'></a><a href='#L26'>26</a>
 <a name='L27'></a><a href='#L27'>27</a>
-<a name='L28'></a><a href='#L28'>28</a>
-<a name='L29'></a><a href='#L29'>29</a>
-<a name='L30'></a><a href='#L30'>30</a>
-<a name='L31'></a><a href='#L31'>31</a>
-<a name='L32'></a><a href='#L32'>32</a>
-<a name='L33'></a><a href='#L33'>33</a>
-<a name='L34'></a><a href='#L34'>34</a>
-<a name='L35'></a><a href='#L35'>35</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L28'></a><a href='#L28'>28</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -111,7 +104,7 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
@@ -121,21 +114,14 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { HttpErrorResponse } from '@angular/common/http';
-import { Component, ElementRef, Input, Renderer2, ViewChild } from '@angular/core';
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { IProduct } from 'src/app/interfaces/IProduct';
-import { HttpRequestsService } from 'src/app/services/httpRequests/http-requests.service';
+import { DialogService } from 'src/app/services/dialogService/dialog.service';
+&nbsp;
 &nbsp;
 @Component({
   selector: 'app-expandable-menu',
@@ -145,7 +131,7 @@ import { HttpRequestsService } from 'src/app/services/httpRequests/http-requests
 export class ExpandableMenuComponent {
   @Input() product!: IProduct;
 &nbsp;
-  constructor(private router: Router, private http: HttpRequestsService) { }
+  constructor(private router: Router, protected dialogService: DialogService) { }
 &nbsp;
   protected navigateEditProduct() {
     sessionStorage.setItem("productInfo", JSON.stringify(this.product));
@@ -153,16 +139,9 @@ export class ExpandableMenuComponent {
   }
 &nbsp;
   protected deleteProduct(id: string, name: string) {
-    if (window.confirm('¿Estás seguro de eliminar el producto ' + name + '?')) {
-      this.http.deleteProduct(id).subscribe({
-        next: <span class="fstat-no" title="function not covered" >() =</span>&gt; {
-<span class="cstat-no" title="statement not covered" >          window.location.reload();</span>
-        },
-        error: (error: HttpErrorResponse) =&gt; {
-          console.error(error.message);
-        }
-      });
-    }
+    this.dialogService.id = id;
+    this.dialogService.name = name;
+    this.dialogService.showDialog = true;
   }
 }
 &nbsp;</pre></td></tr></table></pre>
@@ -172,7 +151,7 @@ export class ExpandableMenuComponent {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-12-31T05:53:07.884Z
+                at 2024-01-14T16:10:55.596Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>

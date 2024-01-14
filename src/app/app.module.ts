@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 
 import { ListComponent } from './pages/list/list.component';
 import { FormComponent } from './pages/form/form.component';
+import { ModalComponent } from './pages/modal/modal.component';
 
 import { GridComponent } from './components/grid/grid.component';
 import { RoundedInputComponent } from './components/rounded-input/rounded-input.component';
@@ -27,7 +28,8 @@ import { ExpandableMenuComponent } from './components/expandable-menu/expandable
     DropDownListComponent,
     ButtonComponent,
     ExpandableMenuComponent,
-    FormComponent
+    FormComponent,
+    ModalComponent
   ],
   imports: [
     BrowserModule,

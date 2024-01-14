@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 
 import { ExpandableMenuComponent } from './expandable-menu.component';
@@ -10,8 +10,7 @@ describe('ExpandableMenuComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [ExpandableMenuComponent],
-      imports: [HttpClientTestingModule]
+      declarations: [ExpandableMenuComponent]
     });
     fixture = TestBed.createComponent(ExpandableMenuComponent);
     component = fixture.componentInstance;
@@ -31,25 +30,9 @@ describe('ExpandableMenuComponent', () => {
   });
 
   describe('deleteProduct', () => {
-    let myComponent: ExpandableMenuComponent;
-
-    beforeEach(() => {
-      let router = jasmine.createSpyObj("router", [{}]);
-      let http = jasmine.createSpyObj("http", {
-        deleteProduct: {
-          subscribe: (obj: any) => { 
-            obj.error({message:"message"}); 
-          }
-        }
-      });
-      myComponent = new ExpandableMenuComponent(router, http);
-    })
-
-    it('should call console.error method', () => {
-      spyOn(window, "confirm").and.returnValue(true);
-      let spy = spyOn(console, "error");
-      myComponent["deleteProduct"]("id", "name");
-      expect(spy).toHaveBeenCalled();
+    it('shows modal dialog', () => {
+      component["deleteProduct"]("id", "name");
+      expect(component["dialogService"].showDialog).toBeTrue();
     });
   });
 });

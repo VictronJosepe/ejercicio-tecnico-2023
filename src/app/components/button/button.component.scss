@@ -19,10 +19,18 @@ button:active {
 
 .primary {
     background-color: #f9de4b;
+
+    &.large {
+        width: 185px;
+    }
 }
 
 .basic {
     background-color: #e9ecf3;
+
+    &.large {
+        width: 185px;
+    }
 }
 
 .disabled {

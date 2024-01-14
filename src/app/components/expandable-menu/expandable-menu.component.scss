@@ -23,6 +23,11 @@
     background-color: #ddd;
 }
 
+.dropdown-content .eliminar:hover {
+    background-color: red;
+    color: white;
+}
+
 .dropdown:hover .dropdown-content {
     display: block;
 }

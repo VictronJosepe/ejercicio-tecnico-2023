@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">96.96% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>31/31</span>
+                <span class='fraction'>32/33</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">96.77% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>29/29</span>
+                <span class='fraction'>30/31</span>
             </div>
         
             
@@ -186,7 +186,11 @@
 <a name='L121'></a><a href='#L121'>121</a>
 <a name='L122'></a><a href='#L122'>122</a>
 <a name='L123'></a><a href='#L123'>123</a>
-<a name='L124'></a><a href='#L124'>124</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L124'></a><a href='#L124'>124</a>
+<a name='L125'></a><a href='#L125'>125</a>
+<a name='L126'></a><a href='#L126'>126</a>
+<a name='L127'></a><a href='#L127'>127</a>
+<a name='L128'></a><a href='#L128'>128</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -209,22 +213,26 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">9x</span>
 <span class="cline-any cline-yes">9x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">8x</span>
-<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">7x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">9x</span>
 <span class="cline-any cline-yes">9x</span>
@@ -332,19 +340,23 @@ export class FormComponent {
   ngOnInit() {
     let productInfo = sessionStorage.getItem("productInfo");
     if (productInfo) {
-      let respObj: IProduct = JSON.parse(productInfo);
+      try {
+        let respObj: IProduct = JSON.parse(productInfo);
 &nbsp;
-      this.productForm.setValue({
-        id: respObj.id,
-        name: respObj.name,
-        description: respObj.description,
-        logo: respObj.logo,
-        releaseDate: new Date(respObj.date_release).toISOString().split('T')[0],
-        revisionDate: new Date(respObj.date_revision).toISOString().split('T')[0]
-      });
+        this.productForm.setValue({
+          id: respObj.id,
+          name: respObj.name,
+          description: respObj.description,
+          logo: respObj.logo,
+          releaseDate: new Date(respObj.date_release).toISOString().split('T')[0],
+          revisionDate: new Date(respObj.date_revision).toISOString().split('T')[0]
+        });
 &nbsp;
-      this.productForm.get('id')?.disable();
-      this.isNewRegistry = false;
+        this.productForm.get('id')?.disable();
+        this.isNewRegistry = false;
+      } catch (error) {
+<span class="cstat-no" title="statement not covered" >        console.error(error);</span>
+      }
     } else {
       this.productForm.get('id')?.addAsyncValidators([this.customValidator.notExistInServer()]);
       this.isNewRegistry = true;
@@ -364,7 +376,7 @@ export class FormComponent {
       name: this.productForm.get('name')!.value!
     }
 &nbsp;
-    if(this.isNewRegistry){
+    if (this.isNewRegistry) {
       this.http.createProduct(obj).subscribe({
         next: (resp: IProduct) =&gt; {
           this.router.navigateByUrl('/ejercicio/products');
@@ -373,7 +385,7 @@ export class FormComponent {
           console.error(error.message);
         }
       });
-    } else{
+    } else {
       this.http.updateProduct(obj).subscribe({
         next: (resp: IProduct) =&gt; {
           this.router.navigateByUrl('/ejercicio/products');
@@ -439,7 +451,7 @@ export class FormComponent {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-12-31T05:53:07.884Z
+                at 2024-01-14T16:10:55.596Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>

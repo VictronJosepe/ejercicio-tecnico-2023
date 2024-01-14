@@ -1,7 +1,9 @@
 <div class="dropdown">
     <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
     <div class="dropdown-content" #menu>
-        <a (click)="navigateEditProduct()">Update</a>
-        <a (click)="deleteProduct(product.id, product.name)">Delete</a>
+        <a (click)="navigateEditProduct()">Actualizar</a>
+        <a (click)="deleteProduct(product.id, product.name)" class="eliminar">Eliminar</a>
     </div>
 </div>
+
+<app-modal *ngIf="dialogService.showDialog"></app-modal>

@@ -1,8 +1,8 @@
-import { HttpErrorResponse } from '@angular/common/http';
-import { Component, ElementRef, Input, Renderer2, ViewChild } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { IProduct } from 'src/app/interfaces/IProduct';
-import { HttpRequestsService } from 'src/app/services/httpRequests/http-requests.service';
+import { DialogService } from 'src/app/services/dialogService/dialog.service';
+
 
 @Component({
   selector: 'app-expandable-menu',
@@ -12,7 +12,7 @@ import { HttpRequestsService } from 'src/app/services/httpRequests/http-requests
 export class ExpandableMenuComponent {
   @Input() product!: IProduct;
 
-  constructor(private router: Router, private http: HttpRequestsService) { }
+  constructor(private router: Router, protected dialogService: DialogService) { }
 
   protected navigateEditProduct() {
     sessionStorage.setItem("productInfo", JSON.stringify(this.product));
@@ -20,15 +20,8 @@ export class ExpandableMenuComponent {
   }
 
   protected deleteProduct(id: string, name: string) {
-    if (window.confirm('¿Estás seguro de eliminar el producto ' + name + '?')) {
-      this.http.deleteProduct(id).subscribe({
-        next: () => {
-          window.location.reload();
-        },
-        error: (error: HttpErrorResponse) => {
-          console.error(error.message);
-        }
-      });
-    }
+    this.dialogService.id = id;
+    this.dialogService.name = name;
+    this.dialogService.showDialog = true;
   }
 }
