@@ -5,3 +5,5 @@
         <a (click)="deleteProduct(product.id, product.name)" class="eliminar">Eliminar</a>
     </div>
 </div>
+
+<app-modal *ngIf="dialogService.showDialog"></app-modal>
