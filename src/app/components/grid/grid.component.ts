@@ -48,6 +48,6 @@ export class GridComponent {
   }
 
   public searchByBox(value: string) {
-    this.productListSliced = this.productListServer!.filter((p) => p.name.includes(value)).slice(0, this.numberShownProducts);
+    this.productListSliced = this.productListServer!.filter((p) => p.name.toLowerCase().includes(value.toLowerCase())).slice(0, this.numberShownProducts);
   }
 }
