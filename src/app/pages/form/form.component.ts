@@ -83,6 +83,8 @@ export class FormComponent {
     this.router.navigateByUrl('/ejercicio/products');
   }
 
+  private regUrl: RegExp = /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)/;
+
   productForm = new FormGroup({
     id: new FormControl("", [
       Validators.required,
@@ -100,7 +102,8 @@ export class FormComponent {
       Validators.maxLength(200)
     ]),
     logo: new FormControl("", [
-      Validators.required
+      Validators.required,
+      Validators.pattern(this.regUrl)
     ]),
     releaseDate: new FormControl("", [
       Validators.required,

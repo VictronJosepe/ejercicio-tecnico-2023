@@ -34,6 +34,9 @@ export class ValidationUtilsService {
         case 'dateIsNotLaterByYear':
           message = "La fecha debe exactamente 1 año posterior a la fecha de Liberación!";
           break;
+        case 'pattern':
+          message = "El logo debe ser una URL!";
+          break;
       }
     }
     return message;

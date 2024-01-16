@@ -22,8 +22,10 @@
         <tbody>
             <tr *ngFor="let product of productListSliced; index as i">
                 <td>
-                    <img src="{{product.logo}}" alt="Image not found"
-                        onerror="this.onerror=null;this.src='../assets/images/placeholder.png';" width="150px" />
+                    <div class="circular-container">
+                        <img src="{{product.logo}}" alt="Image not found"
+                            onerror="this.onerror=null;this.src='../assets/images/placeholder.png';" />
+                    </div>
                 </td>
                 <td>{{product.name}}</td>
                 <td>{{product.description}}</td>
