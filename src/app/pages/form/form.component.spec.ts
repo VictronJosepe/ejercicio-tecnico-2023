@@ -35,6 +35,13 @@ describe('FormComponent', () => {
       component.ngOnInit();
       expect(spy).toHaveBeenCalled();
     });
+
+    it('catches error', () => {
+      sessionStorage.setItem("productInfo", 'undefined');
+      let spy = spyOn<any>(console, "error");
+      component.ngOnInit();
+      expect(spy).toHaveBeenCalled();
+    });
   });
 
   describe('saveChanges', () => {

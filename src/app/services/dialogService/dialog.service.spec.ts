@@ -13,4 +13,12 @@ describe('DialogService', () => {
   it('should be created', () => {
     expect(service).toBeTruthy();
   });
+
+  describe('id', () => {
+    it('returns id value', () => {
+      let text = "test1"
+      service.id = text;
+      expect(service.id).toBe(text); 
+    });
+  });
 });

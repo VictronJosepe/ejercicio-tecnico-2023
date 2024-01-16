@@ -74,5 +74,15 @@ describe('ValidationUtilsService', () => {
 
       expect(ValidationUtilsService.getMessage(control)).toEqual("La fecha debe exactamente 1 año posterior a la fecha de Liberación!");
     });
+
+    it('shows pattern message', () => {
+      let control = jasmine.createSpyObj("control", [], {
+        touched: true,
+        valid: false,
+        errors: { pattern: true }
+      });
+
+      expect(ValidationUtilsService.getMessage(control)).toEqual("El logo debe ser una URL!");
+    });
   });
 });

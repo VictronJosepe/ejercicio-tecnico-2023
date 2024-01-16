@@ -23,6 +23,20 @@ describe('GridComponent', () => {
     expect(component).toBeTruthy();
   });
 
+  describe('ngOnInit', () => {
+    it('calls createProduct method: next', () => {
+      let spy = spyOn(component["http"], "getAllProducts").and.returnValue({ subscribe: (obj: any) => { obj.next("message") } } as any);
+      component.ngOnInit();
+      expect(spy).toHaveBeenCalled();
+    });
+
+    it('calls createProduct method: error', () => {
+      let spy = spyOn(component["http"], "getAllProducts").and.returnValue({ subscribe: (obj: any) => { obj.error("message") } } as any);
+      component.ngOnInit();
+      expect(spy).toHaveBeenCalled();
+    });
+  });
+
   describe('updateProductListQuantity', () => {
     it('sets date  correctly', () => {
       component["productListServer"] = [{
